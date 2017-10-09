@@ -1,0 +1,31 @@
+$temp1 =count($this->input->post('fasilitasplus'));
+$temp2 =count($data);
+$count = 0;
+for($i=0; $i<$temp1;$i++)
+{
+  for($j=0; $j<$temp2;$j++)
+  {
+    if($data[$i]->transaksi_addt_id == $fasilitasplus[$j])
+    {
+      $count += 1;
+    }
+  }
+  if($count > 0)
+  {
+    $data4 = array(
+             'additional_id'			=> $fasilitasplus[$i],
+             'updated_at'  			=> $date
+             );
+        $where = array(
+              'transaksi_id'			=> $id,
+              'transaksi_addt_id' => $kodeAddDetil4[$i]
+             );
+       $this->m_transaksi_additional_detail->update_data($where,$data4,'transaksi_detail_additional');
+  }else {
+    $where = array(
+              'transaksi_id'			=> $id,
+              'transaksi_addt_id' => $kodeAddDetil4[$]
+             );
+    $this->m_transaksi_additional_detail->hapus_data($where,'transaksi_detail_additional');
+  }
+      $count = 0;
