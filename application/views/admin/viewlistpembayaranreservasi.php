@@ -666,7 +666,11 @@ function coba()
           alert('Tunai Harus Angka');
           return false;
         }
-        else{
+        else if(tunai < totalallint)
+        {
+          alert('Pembayaran Tunai Harus Lebih Besar Daripada Total');
+          return false;
+        }else{
         e.preventDefault(); // <------this will restrict the page refresh
         var form_data = $(this).serialize();
         $.ajax({
